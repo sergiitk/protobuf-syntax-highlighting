@@ -310,7 +310,7 @@ contexts:
 
 # Rpc
   rpc:
-    - match: '\b(rpc)\b\s+({{ident}})\s*(?=\()'
+    - match: '\b(rpc)\b\s+({{fullident}})\s*(?=\()'
       captures:
         1: keyword.control.proto
         2: entity.name.function.proto
