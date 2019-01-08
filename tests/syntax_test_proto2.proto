@@ -56,13 +56,19 @@ message Player {
   //      ^^^^^^^^^^^^^^^^^^^^ variable.other.field.proto
 
   reserved 42;
-  // <- storage.modifier.reserved.proto
+  // <- storage.modifier.proto
   //       ^^ constant.numeric.proto
   reserved 100 to 200;
-  // <- storage.modifier.reserved.proto
+  // <- storage.modifier.proto
   //       ^^^ constant.numeric.proto
   //           ^^ keyword.other.to.proto
   //              ^^^ constant.numeric.proto
+
+  extensions 10000 to max;
+  // <- storage.modifier.proto
+  //         ^^^^^ constant.numeric.proto
+  //               ^^ keyword.other.to.proto
+  //                  ^^^ constant.language.proto
 
   // Stats describing the user characteristic (Strenght, Intelligence, ...).
   // <- comment.line.proto punctuation.definition.comment.begin.proto
@@ -124,6 +130,7 @@ enum Buff {
   //                   ^^^^ constant.language
 
   NO_BUFF = 0;
+  // <- constant.other.enum.proto
   FROZEN = 1;
   BURNING = 2;
   POISONED = 2 [(doc) = "Poisoned by a magic weapon."];
