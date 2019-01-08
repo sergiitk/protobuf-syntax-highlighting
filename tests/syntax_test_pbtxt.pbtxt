@@ -16,6 +16,7 @@ health: 1e+2
 #       ^^^^ constant.numeric.float.prototxt
 xp: 4200   # normal digit
 #   ^^^^ constant.numeric.integer.prototxt
+#            ^^^^^^^^^^^^ comment.line.prototxt
 xp: 04200  # octal
 #   ^^^^^ constant.numeric.octal.prototxt
 #   ^ punctuation.definition.numeric.octal.prototxt
