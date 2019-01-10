@@ -33,23 +33,22 @@ contexts:
     - include: service
 
     # This is proto1 syntax which is deprecated, only providing minimal support.
-    - match: '\b(parsed)?\s*((class))\s+{{ident}}\s+{'
+    - match: '\b(parsed)?\s*(class)\s+{{ident}}\s+{'
       scope: meta.parsed.message.proto
       captures:
-        1: storage.type.parsed.proto
-        3: storage.type.message.proto
-        4: invalid.deprecated.class.proto
-        5: entity.name.function.proto
+        1: storage.modifier.proto
+        2: storage.type.message.proto
+        3: entity.name.class.proto
       push:
         - match: '}'
           pop: true
         - include: message_body
     # Groups are deprecated, only providing minimal support.
-    - match: '\b(group)\s+(\w+)\s+=\s+(\d+)\s+{'
+    - match: '\b(group)\s+{{ident}}\s+=\s+(\d+)\s+{'
       scope: meta.group.proto
       captures:
         1: storage.type.proto invalid.deprecated.group.proto
-        2: support.variable.proto
+        2: variable.other.field.proto
         3: constant.numeric.proto
       push:
         - match: '}'
@@ -146,7 +145,7 @@ contexts:
 # Option
   option:
     - match: '\b(option)\b'
-      scope: keyword.other.option.proto
+      scope: storage.type.annotation.proto
       push:
         - match: ';'
           scope: punctuation.terminator.option.proto
@@ -184,7 +183,7 @@ contexts:
   message:
     - match: '\b(message)\b\s*{{ident}}'
       captures:
-        1: storage.modifier.message.proto
+        1: storage.type.message.proto
         2: entity.name.class.proto
       push:
         - meta_scope: meta.class.proto
@@ -224,7 +223,7 @@ contexts:
   enum:
     - match: '\b(enum)\b\s*{{ident}}'
       captures:
-        1: storage.modifier.enum.proto
+        1: storage.type.enum.proto
         2: entity.name.enum.proto
       push:
         - meta_scope: meta.enum.proto
@@ -291,7 +290,7 @@ contexts:
   service:
     - match: '\b(service)\b\s*{{ident}}'
       captures:
-        1: storage.modifier.service.proto
+        1: storage.type.service.proto
         2: entity.name.class.proto
       push:
         - meta_scope: meta.service.proto
@@ -311,7 +310,7 @@ contexts:
   rpc:
     - match: '\b(rpc)\b\s*{{ident}}'
       captures:
-        1: storage.modifier.rpc.proto
+        1: storage.type.rpc.proto
         2: entity.name.function.rpc.proto
       push: [rpc_body, rpc_param, rpc_returns, rpc_param]
 
@@ -447,7 +446,8 @@ contexts:
         1: variable.namespace.proto
         2: punctuation.accessor.proto
     - match: '{{ident}}'
-      scope: variable.type.proto
+      # TODO: Use the convention decided in https://github.com/sublimehq/Packages/issues/582
+      scope: storage.type.proto variable.type.proto
       pop: true
 
   map_type:

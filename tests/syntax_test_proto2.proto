@@ -12,13 +12,13 @@ import "escape_dungeon/weapons.proto";
 //      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.proto
 
 option java_package = "com.example.foo";
-// <- keyword.other.option.proto
+// <- storage.type.annotation.proto
 //     ^^^^^^^^^^^^ variable.annotation.proto
 //                  ^ keyword.operator.assignment.proto
 //                    ^^^^^^^^^^^^^^^^^ string
 
 message Player {
-// <- meta.class.proto storage.modifier.message.proto
+// <- meta.class.proto storage.type.message.proto
 //      ^^^^^^ entity.name.class.proto
 
   required string name = 1;
@@ -78,7 +78,7 @@ message Player {
   // Stats describing the user characteristic (Strenght, Intelligence, ...).
   // <- comment.line.proto punctuation.definition.comment.begin.proto
   message Stats {
-  // <- meta.class.proto meta.class.proto storage.modifier.message.proto
+  // <- meta.class.proto meta.class.proto storage.type.message.proto
     required string id = 1;
     // <- storage.modifier.proto
     optional int32 max_value = 2;
@@ -125,11 +125,11 @@ message LevelConfig {
 }
 
 enum Buff {
-// <- meta.enum.proto storage.modifier.enum.proto
+// <- meta.enum.proto storage.type.enum.proto
 //   ^^^^ entity.name.enum.proto
 
   option allow_alias = true;
-  // <- keyword.other.option.proto
+  // <- storage.type.annotation.proto
   //     ^^^^^^^^^^^ variable.annotation.proto
   //                 ^ keyword.operator.assignment.proto
   //                   ^^^^ constant.language
@@ -145,9 +145,9 @@ enum Buff {
 }
 
 service PlayerService {
-// <- meta.service.proto storage.modifier.service.proto
+// <- meta.service.proto storage.type.service.proto
   rpc GetPlayer (PlayerRequest) returns (PlayerResponse);
-  // <- storage.modifier.rpc.proto
+  // <- storage.type.rpc.proto
   //  ^^^^^^^^^ entity.name.function.rpc.proto
   //             ^^^^^^^^^^^^^ variable.type.proto
   //                            ^^^^^^^ keyword.other.returns.proto
@@ -156,7 +156,7 @@ service PlayerService {
   //                                                   ^ punctuation.definition.parameter.rpc.end.proto
 
   rpc GetAllPlayers(AllPlayersRequest) returns (stream PlayerResponse) {
-  // <- storage.modifier.rpc.proto
+  // <- storage.type.rpc.proto
   //  ^^^^^^^^^^^^^ entity.name.function.rpc.proto
   //                ^^^^^^^^^^^^^^^^^ variable.type.proto
   //                                   ^^^^^^^ keyword.other
@@ -169,13 +169,13 @@ service PlayerService {
     //                      ^^^^^^ meta.service.proto meta.rpc.body.proto string.quoted.double.prototxt
     //                            ^ meta.service.proto meta.rpc.body.proto punctuation.terminator.option.proto
     option deadline = 5.0;
-    // <- keyword.other.option.proto
+    // <- storage.type.annotation.proto
     //     ^^^^^^^^ variable.annotation.proto
     //              ^ keyword.operator.assignment.proto
     //                ^^^ constant.numeric.float.prototxt
     //                   ^ punctuation.terminator.option.proto
     option (method_doc) =
-    // <- keyword.other.option.proto
+    // <- storage.type.annotation.proto
     //      ^^^^^^^^^^ variable.annotation.proto
     //                  ^ keyword.operator.assignment.proto
         "Returns all the player."
