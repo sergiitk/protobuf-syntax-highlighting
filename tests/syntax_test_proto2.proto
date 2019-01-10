@@ -63,6 +63,11 @@ message Player {
   //       ^^^ constant.numeric.proto
   //           ^^ keyword.other.to.proto
   //              ^^^ constant.numeric.proto
+  reserved "deprecated_field", "another_field";
+  // <- storage.modifier.proto
+  //       ^^^^^^^^^^^^^^^^^^ string
+  //                         ^ punctuation.separator.proto
+
 
   extensions 10000 to max;
   // <- storage.modifier.proto

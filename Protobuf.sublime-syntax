@@ -349,20 +349,27 @@ contexts:
 
 # Reserved
   reserved:
-    - match: '\b(reserved|extensions)\b'
+    - match: '\b(reserved)\b'
       scope: storage.modifier.proto
       push:
-        - match: \d+
-          scope: constant.numeric.proto
-        - match: max
-          scope: constant.language.proto
-        - match: ','
-          scope: punctuation.separator.proto
-        - match: to
-          scope: keyword.other.to.proto
-        - match: ';'
-          scope: punctuation.terminator.proto
-          pop: true
+        - include: numeric_range
+        - include: string
+    - match: '\b(extensions)\b'
+      scope: storage.modifier.proto
+      push: numeric_range
+
+  numeric_range:
+    - match: \d+
+      scope: constant.numeric.proto
+    - match: max
+      scope: constant.language.proto
+    - match: ','
+      scope: punctuation.separator.proto
+    - match: to
+      scope: keyword.other.to.proto
+    - match: ';'
+      scope: punctuation.terminator.proto
+      pop: true
 
   field_end_or_pop:
     - match: ''
