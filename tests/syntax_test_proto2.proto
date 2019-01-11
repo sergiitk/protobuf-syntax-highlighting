@@ -65,8 +65,9 @@ message Player {
   //              ^^^ constant.numeric.proto
   reserved "deprecated_field", "another_field";
   // <- storage.modifier.proto
-  //       ^^^^^^^^^^^^^^^^^^ string
+  //       ^^^^^^^^^^^^^^^^^^ string.quoted.double.proto
   //                         ^ punctuation.separator.proto
+  //                           ^^^^^^^^^^^^^^^ string.quoted.double.proto
 
 
   extensions 10000 to max;
@@ -136,9 +137,15 @@ enum Buff {
 
   NO_BUFF = 0;
   // <- constant.other.enum.proto
+  //      ^ keyword.operator.assignment.proto
+  //        ^ constant.numeric.proto
   FROZEN = 1;
   BURNING = 2;
   POISONED = 2 [(doc) = "Poisoned by a magic weapon."];
+  //           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ meta.field.attributes.proto
+  //           ^ punctuation.definition.attributes.begin.proto
+  //             ^^^ variable.annotation.proto
+  //                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ string.quoted.double.prototxt
   INVALID == 2;
   //       ^ -keyword
   //         ^ -constant
