@@ -38,7 +38,7 @@ contexts:
       scope: punctuation.definition.comment.begin.prototxt
       push:
         - meta_scope: comment.line.prototxt
-        - match: '$'
+        - match: $\n?
           pop: true
 
   field:

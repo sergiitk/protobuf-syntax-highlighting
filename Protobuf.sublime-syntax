@@ -62,7 +62,7 @@ contexts:
       scope: punctuation.definition.comment.begin.proto
       push:
         - meta_scope: comment.line.proto
-        - match: '$'
+        - match: $\n?
           pop: true
     - match: /\*
       scope: punctuation.definition.comment.proto
