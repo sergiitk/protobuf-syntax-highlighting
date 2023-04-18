@@ -14,6 +14,7 @@ file_extensions:
   - textpb
   - pbtxt
   - prototxt
+  - textproto
 scope: text.prototxt
 variables:
   stringEscape: '(?:\\(?:[''"\\/abfnrtv?]|[0-9]{3}|(?i:u|x)[0-9A-Fa-f]+))'
